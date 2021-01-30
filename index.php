@@ -35,7 +35,7 @@ $limit_start = ($page*$limit_page)-$limit_page;
 <!-- Header -->
 <header>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="./">QNA Academy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -70,66 +70,72 @@ $limit_start = ($page*$limit_page)-$limit_page;
 </nav>
 </header>
   
-  <!-- Using PHP Loop -->  
-<div class="row">
-      <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
-        <div id="left-sidebar">
-          <ul>
-            <li><a class="link-dark" href="./">Home</a></li>
-            <li><a class="link-dark" href="#">New Questions</a></li>
-            <li><a class="link-dark" href="#">Popular Questions</a></li>
-          </ul>
-          <div class="-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary" type="button">Ask a Question</button>
+  <!-- Using PHP Loop --> 
+<div class="container-fluid">  
+  <div class="row">
+        <div class="col pt-4 -grid gap-2 d-md-flex justify-content-md-end">
+          <div id="left-sidebar">
+            <ul>
+              <li><a class="link-dark" href="./">Home</a></li>
+              <li><a class="link-dark" href="#">New Questions</a></li>
+              <li><a class="link-dark" href="#">Popular Questions</a></li>
+            </ul>
+            <div class="-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary" type="button">Ask a Question</button>
+            </div>
+            <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
+                <a class="link-dark" href="./users/Signin.php">
+                    <button type="button" class="btn btn-danger btn-sm">Sign In</button>
+                </a>
+                <a class="link-dark" href="./users/signup.php">
+                    <button type="button" class="btn btn-success btn-sm">Register</button>
+                </a>
+            </div>  
           </div>
-          <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-danger btn-sm">Sign In</button>
-            <button type="button" class="btn btn-success btn-sm">Register</button>
-          </div>  
         </div>
-      </div>
 
-      <div class="col-8 py-3" id="question-summary-1">
-    <?php 
-    $query = mysqli_query($conn,"SELECT * FROM data_qna ORDER BY id DESC LIMIT $limit_start,$limit_page");
-    while($result = mysqli_fetch_array($query)){   
-    ?>
-      <div class="border border-1 question-summary">
-          <div class="row p-1 summary">
-            <h3 class="align-self-start" >
-              <a href="./questions.php?id=<?php echo $result['id']?>&question=<?php echo $result['question'];?>" style="text-decoration:none">
-                <?php echo $result['question'];?>
-              </a>
-            </h3>
-          </div>
-          <div class="row px-4 excerpt">
-          ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
-          </div>
-          <div class="row px-4 tags">
-              #CSS , #HTML
-          </div>
-          <div class="row total-summary">
-              <div class="col-2 ps-5 total-like">
-                <strong>10</strong>
-                like
-              </div>
-              <div class="col-10 total-answer">
-                <strong>10</strong>
-                answer
-              </div>
-          </div>
-        </div> 
-          <?php } ?>   
-      </div>
-      <div class="col-2 pt-4" id="right-sidebar">
-        <div class="related-tag">
-          <h4 id="h-related-tags">Related Tags</h4>
-          <div class="javascript">Javascript</div>
-          <div class="css">CSS</div>
-          <div class="html">HTML</div>
+        <div class="col-8 py-3" id="question-summary-1">
+      <?php 
+      $query = mysqli_query($conn,"SELECT * FROM data_qna ORDER BY id DESC LIMIT $limit_start,$limit_page");
+      while($result = mysqli_fetch_array($query)){   
+      ?>
+        <div class="border border-1 question-summary">
+            <div class="row p-1 summary">
+              <h3 class="align-self-start" >
+                <a href="./questions.php?id=<?php echo $result['id']?>&question=<?php echo $result['question'];?>" style="text-decoration:none">
+                  <?php echo $result['question'];?>
+                </a>
+              </h3>
+            </div>
+            <div class="row px-4 excerpt">
+            ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
+            </div>
+            <div class="row px-4 tags">
+                #CSS , #HTML
+            </div>
+            <div class="row total-summary">
+                <div class="col-2 ps-5 total-like">
+                  <strong>10</strong>
+                  like
+                </div>
+                <div class="col-10 total-answer">
+                  <strong>10</strong>
+                  answer
+                </div>
+            </div>
+          </div> 
+            <?php } ?>   
         </div>
-      </div>
-</div>      
+        <div class="col pt-4" id="right-sidebar">
+          <div class="related-tag">
+            <h4 id="h-related-tags">Related Tags</h4>
+            <div class="javascript">Javascript</div>
+            <div class="css">CSS</div>
+            <div class="html">HTML</div>
+          </div>
+        </div>
+  </div>   
+</div>   
   <!-- Pagination -->
   <nav aria-label="...">
   <ul class="pagination justify-content-center" >
@@ -233,21 +239,17 @@ $limit_start = ($page*$limit_page)-$limit_page;
     <div class="col-6 col-md">
       <h5>Features</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary" href="#">Random feature</a></li>
-        <li><a class="link-secondary" href="#">Team feature</a></li>
-        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-        <li><a class="link-secondary" href="#">Another one</a></li>
-        <li><a class="link-secondary" href="#">Last time</a></li>
+        <li><a class="link-secondary" href="#">Cool Questions</a></li>
+        <li><a class="link-secondary" href="#">New Questions</a></li>
+        <li><a class="link-secondary" href="#">Popular Questions</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
-      <h5>Resources</h5>
+      <h5>Lessons</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Resource name</a></li>
-        <li><a class="link-secondary" href="#">Resource</a></li>
-        <li><a class="link-secondary" href="#">Another resource</a></li>
-        <li><a class="link-secondary" href="#">Final resource</a></li>
+        <li><a class="link-secondary" href="#">HTML</a></li>
+        <li><a class="link-secondary" href="#">CSS</a></li>
+        <li><a class="link-secondary" href="#">PHP</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
@@ -256,7 +258,6 @@ $limit_start = ($page*$limit_page)-$limit_page;
         <li><a class="link-secondary" href="#">Business</a></li>
         <li><a class="link-secondary" href="#">Education</a></li>
         <li><a class="link-secondary" href="#">Government</a></li>
-        <li><a class="link-secondary" href="#">Gaming</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">

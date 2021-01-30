@@ -62,8 +62,8 @@
               <button class="btn btn-primary" type="button">Ask a Question</button>
             </div>
             <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
-                <a class="link-dark" href="./signin.php">
-                    <button type="button" class="btn btn-success btn-lg">Sign In</button>
+                <a class="link-dark" href="./signup.php">
+                    <button type="button" class="btn btn-success btn-lg">Register</button>
                 </a>
                 
             </div>  
@@ -73,20 +73,16 @@
             <form>
                 <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-                <label for="inputEmail" class="visually-hidden">Full-name</label>
-                <input type="text" id="inputEmail" class="form-control" placeholder="Full name" required="" autofocus="">
                 <label for="inputEmail" class="visually-hidden">Email address</label>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
                 <label for="inputPassword" class="visually-hidden">Password</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                <label for="inputPassword" class="visually-hidden">Re-Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Re-Password" required="">
                 <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Follow Us
                 </label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             </form>
         </main>
     </div>   

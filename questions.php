@@ -20,7 +20,7 @@ $result = mysqli_fetch_array($query);
 <!-- Header -->
 <header>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="./">QNA Academy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -56,68 +56,69 @@ $result = mysqli_fetch_array($query);
 </header>
 
 <!-- Main Body -->
-<div class="row">
-      <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
-        <div id="left-sidebar">
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
+          <div id="left-sidebar">
 
-          <ul>
-            <li><a class="link-dark" href="./">Home</a></li>
-            <li><a class="link-dark" href="#">New Questions</a></li>
-            <li><a class="link-dark" href="#">Popular Questions</a></li>
-          </ul>
-          <div class="-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary" type="button">Ask a Question</button>
+            <ul>
+              <li><a class="link-dark" href="./">Home</a></li>
+              <li><a class="link-dark" href="#">New Questions</a></li>
+              <li><a class="link-dark" href="#">Popular Questions</a></li>
+            </ul>
+            <div class="-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary" type="button">Ask a Question</button>
+            </div>
+            <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn btn-danger btn-sm">Sign In</button>
+              <button type="button" class="btn btn-success btn-sm">Register</button>
+            </div>  
           </div>
-          <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-danger btn-sm">Sign In</button>
-            <button type="button" class="btn btn-success btn-sm">Register</button>
-          </div>  
         </div>
-      </div>
 
-      <div class="col-8 py-3" id="question-summary-1">
-      <div class="question-summary">
-          <div class="row p-1 summary">
-            <h3 class="align-self-start" >
-                <?php echo $result['question'];?>
-            </h3>
+        <div class="col-8 py-3" id="question-summary-1">
+        <div class="question-summary">
+            <div class="row p-1 summary">
+              <h3 class="align-self-start" >
+                  <?php echo $result['question'];?>
+              </h3>
+            </div>
+            <div class="row px-4 excerpt">
+            ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
+            </div>
+            <div class="row px-4 tags">
+                #CSS , #HTML
+            </div>
+            <div class="row total-summary">
+                <div class="col-2 ps-5 total-like">
+                  <strong>10</strong>
+                  like
+                </div>
+                <div class="col-10 total-answer">
+                  <strong>10</strong>
+                  answer
+                </div>
+            </div>
           </div>
-          <div class="row px-4 excerpt">
-          ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
+          <h4 class="mt-4">Your Answer</h4>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a answer here" id="floatingTextarea2" style="height: 300px"></textarea>
+            <label for="floatingTextarea2">Answer here</label>
           </div>
-          <div class="row px-4 tags">
-              #CSS , #HTML
-          </div>
-          <div class="row total-summary">
-              <div class="col-2 ps-5 total-like">
-                <strong>10</strong>
-                like
-              </div>
-              <div class="col-10 total-answer">
-                <strong>10</strong>
-                answer
-              </div>
+          <div class="col-4 mt-2">
+            <button class="btn btn-danger" type="button">Post Your Answer</button>
           </div>
         </div>
-        <h4 class="mt-4">Your Answer</h4>
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a answer here" id="floatingTextarea2" style="height: 300px"></textarea>
-          <label for="floatingTextarea2">Answer here</label>
+        <div class="col-2 pt-4" id="right-sidebar">
+          <div class="related-tag">
+            <h4 id="h-related-tags">Related Tags</h4>
+            <div class="javascript">Javascript</div>
+            <div class="css">CSS</div>
+            <div class="html">HTML</div>
+          </div>
         </div>
-        <div class="col-4 mt-2">
-          <button class="btn btn-danger" type="button">Post Your Answer</button>
-        </div>
-      </div>
-      <div class="col-2 pt-4" id="right-sidebar">
-        <div class="related-tag">
-          <h4 id="h-related-tags">Related Tags</h4>
-          <div class="javascript">Javascript</div>
-          <div class="css">CSS</div>
-          <div class="html">HTML</div>
-        </div>
-      </div>
-</div>   
-
+  </div>   
+</div>
  
   
 
