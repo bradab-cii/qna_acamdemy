@@ -1,7 +1,7 @@
 <?php
 include('connectdb.php');
 $id = $_GET['id'];
-$query = mysqli_query($conn,"SELECT * FROM data_movie WHERE id= $id");
+$query = mysqli_query($conn,"SELECT * FROM data_qna WHERE id= $id");
 $result = mysqli_fetch_array($query);
 ?>
 
@@ -10,19 +10,18 @@ $result = mysqli_fetch_array($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $result['title'];?></title>
     <!-- Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Question</title>
   </head>
-<body style="color:#fff">
-
+<body>
 <!-- Header -->
 <header>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./">K.O Movies</a>
+    <a class="navbar-brand" href="./">QNA Academy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,19 +31,19 @@ $result = mysqli_fetch_array($query);
         <li class="nav-item active">
           <a class="nav-link" aria-current="page" href="./">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Lessons</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">C Programming</a></li>
+            <li><a class="dropdown-item" href="#">C ++</a></li>
+            <li><a class="dropdown-item" href="#">HTML</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -56,115 +55,79 @@ $result = mysqli_fetch_array($query);
 </nav>
 </header>
 
+<!-- Main Body -->
+<div class="row">
+      <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
+        <div id="left-sidebar">
 
-<!-- Album body -->
-<div class="album py-4 bg-dark">
-    <div class="container row">
-
-    <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Library</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Data</li>
-        </ol>
-      </nav>
-  <!-- Breadcrumb -->
-  
-  <!-- Using PHP Loop -->
-      <div class="main-content col-md-8">
-        <div class="movie-info col-xs-8 row ">
-            <div class="movie-poster col-md-4">
-                    <img src="images/<?php echo $result['img'];?>" alt="" width="100%" height="auto">
-            </div>
-            <div class="movie-detail col-md-8">
-                  <div class="detail">
-                    <h2 class="card-text"><?php echo $result['title'];?></h2>
-                    <p>Time : <?php echo $result['minute'];?></p>
-                    <p class="category">Genres : 
-                      <a href="#" rel="category tag">Action</a>, 
-                      <a href="#" rel="category tag">Romantic</a>, 
-                      <a href="#" rel="category tag">Comedy</a>, 
-                      <a href="#" rel="category tag">Fantasy</a>, 
-                      <a href="#" rel="category tag">Romance</a>, 
-                      <a href="#" rel="category tag">Magic</a>, 
-                      <a href="#" rel="category tag">ตอนแรก</a>, 
-                      <a href="#" rel="category tag">ซับไทย</a>
-                    </p>
-                    <p class="category">Trailer : <a href="https://www.youtube.com/embed/iYX6EHYhl2M" rel="" target="_blank">ดูตัวอย่าง </a>
-                    </p>
-                </div>
-            </div>
-        </div> <!-- movie-info -->
-        <div class="entry-content">
-          <h3>About</h3>
-          <article>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum tenetur nam earum, officiis illo veritatis?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat consequuntur totam quod! Obcaecati, saepe expedita.</p>
-          </article>
-        </div>
-        <!-- full videos -->
-        <div class="row pt-5">
-            <div class="col-md-12">
-                <div class="card shadow-sm text-center">
-                        <h3>Player</h3>
-                </div>
-                <div class="card md-4 shadow-sm">
-                    <iframe width="100%" height="380px" src="https://www.youtube.com/embed/<?php echo $result['vdo_main'];?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-      </div> <!-- main-content -->
-      <!-- Sidebar -->
-      <div class="sidebar col-md-4">
-        <div class="fb-page">
-            <iframe width="300" height="320" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com/ดูหนังออนไลน์-123HD-100217911434283%2F&amp;tabs=messages&amp;width=300&amp;height=320&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=1200986986682567" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
-            </iframe>
-        </div>
-        <div class="popular-post col-md-12">
-          <h5>Popular Post</h5>
-          <div class="pop-detail row">
-            <div class="img col-md-5">
-              <img src="images/05.jpg" alt="" width="100%" height="auto">
-            </div>
-            <div class="title col-md-7 ">
-              <h6>True Beauty(2020)</h6>
-              <p>29.9K view</p>
-            </div>
+          <ul>
+            <li><a class="link-dark" href="./">Home</a></li>
+            <li><a class="link-dark" href="#">New Questions</a></li>
+            <li><a class="link-dark" href="#">Popular Questions</a></li>
+          </ul>
+          <div class="-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary" type="button">Ask a Question</button>
           </div>
-          <div class="pop-detail row">
-            <div class="img col-md-5">
-              <img src="images/05.jpg" alt="" width="100%" height="auto">
-            </div>
-            <div class="title col-md-7 ">
-              <h6>True Beauty(2020)</h6>
-              <p>29.9K view</p>
-            </div>
-          </div>
-          <div class="pop-detail row">
-            <div class="img col-md-5">
-              <img src="images/05.jpg" alt="" width="100%" height="auto">
-            </div>
-            <div class="title col-md-7 ">
-              <h6>True Beauty(2020)</h6>
-              <p>29.9K view</p>
-            </div>
-          </div>
+          <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-danger btn-sm">Sign In</button>
+            <button type="button" class="btn btn-success btn-sm">Register</button>
+          </div>  
         </div>
       </div>
-      
-    </div> <!-- container row -->
-</div>
 
+      <div class="col-8 py-3" id="question-summary-1">
+      <div class="question-summary">
+          <div class="row p-1 summary">
+            <h3 class="align-self-start" >
+                <?php echo $result['question'];?>
+            </h3>
+          </div>
+          <div class="row px-4 excerpt">
+          ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
+          </div>
+          <div class="row px-4 tags">
+              #CSS , #HTML
+          </div>
+          <div class="row total-summary">
+              <div class="col-2 ps-5 total-like">
+                <strong>10</strong>
+                like
+              </div>
+              <div class="col-10 total-answer">
+                <strong>10</strong>
+                answer
+              </div>
+          </div>
+        </div>
+        <h4 class="mt-4">Your Answer</h4>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a answer here" id="floatingTextarea2" style="height: 300px"></textarea>
+          <label for="floatingTextarea2">Answer here</label>
+        </div>
+        <div class="col-4 mt-2">
+          <button class="btn btn-danger" type="button">Post Your Answer</button>
+        </div>
+      </div>
+      <div class="col-2 pt-4" id="right-sidebar">
+        <div class="related-tag">
+          <h4 id="h-related-tags">Related Tags</h4>
+          <div class="javascript">Javascript</div>
+          <div class="css">CSS</div>
+          <div class="html">HTML</div>
+        </div>
+      </div>
+</div>   
+
+ 
+  
 
 <!-- Footer -->
-<footer class="bg-dark">
-  <div class="container py-5">
-    <div class="row">
+<footer class="container py-5">
+  <div class="row">
     <div class="col-12 col-md">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
-      <small class="d-block mb-3 text-muted">© 2017-2020</small>
-      <p> Created by <a href="./">K.O Movies</a></p>
+      <small class="d-block mb-3 text-muted">© 2021</small>
+      <p> Created by <a href="./">QNA Academy</a></p>
     </div>
     <div class="col-6 col-md">
       <h5>Features</h5>
@@ -203,7 +166,6 @@ $result = mysqli_fetch_array($query);
         <li><a class="link-secondary" href="#">Privacy</a></li>
         <li><a class="link-secondary" href="#">Terms</a></li>
       </ul>
-    </div>
     </div>
   </div>
 </footer>

@@ -1,0 +1,11 @@
+/* Left-sidebar */
+div#left-sidebar {
+    position: fixed;
+}
+div#left-sidebar ul{
+    list-style-type: none;
+}
+a.link-dark {
+    text-decoration: none;
+}
+

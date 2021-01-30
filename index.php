@@ -1,8 +1,8 @@
 <?php
 include('connectdb.php');
 
-$num_row = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM data_movie"));
-$limit_page = 8;
+$num_row = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM data_qna"));
+$limit_page = 4;
 
 //if don't have page
 //if(isset($_GET["Page"])){
@@ -28,7 +28,7 @@ $limit_start = ($page*$limit_page)-$limit_page;
     <!-- Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -36,7 +36,7 @@ $limit_start = ($page*$limit_page)-$limit_page;
 <header>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./">QNA Cambodia</a>
+    <a class="navbar-brand" href="./">QNA Academy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,19 +46,19 @@ $limit_start = ($page*$limit_page)-$limit_page;
         <li class="nav-item active">
           <a class="nav-link" aria-current="page" href="./">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Lessons</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">C Programming</a></li>
+            <li><a class="dropdown-item" href="#">C ++</a></li>
+            <li><a class="dropdown-item" href="#">HTML</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -72,43 +72,49 @@ $limit_start = ($page*$limit_page)-$limit_page;
   
   <!-- Using PHP Loop -->  
 <div class="row">
-      <div class="col-2 pt-4" id="left-sidebar">
-      <h4 class="text-center">Menu</h4>
+      <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
+        <div id="left-sidebar">
           <ul>
-            <li>New Question</li>
-            <li>Popular Question</li>
+            <li><a class="link-dark" href="./">Home</a></li>
+            <li><a class="link-dark" href="#">New Questions</a></li>
+            <li><a class="link-dark" href="#">Popular Questions</a></li>
           </ul>
+          <div class="-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary" type="button">Ask a Question</button>
+          </div>
+          <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-danger btn-sm">Sign In</button>
+            <button type="button" class="btn btn-success btn-sm">Register</button>
+          </div>  
+        </div>
       </div>
+
       <div class="col-8 py-3" id="question-summary-1">
-      
     <?php 
-    $query = mysqli_query($conn,"SELECT * FROM data_movie ORDER BY id DESC LIMIT $limit_start,$limit_page");
+    $query = mysqli_query($conn,"SELECT * FROM data_qna ORDER BY id DESC LIMIT $limit_start,$limit_page");
     while($result = mysqli_fetch_array($query)){   
     ?>
-      <div class="border border-secondary question-summary">
+      <div class="border border-1 question-summary">
           <div class="row p-1 summary">
             <h3 class="align-self-start" >
-              <a href="./questions.php?id=<?php echo $result['id']?>&title=<?php echo $result['question'];?>" style="text-decoration:none">
+              <a href="./questions.php?id=<?php echo $result['id']?>&question=<?php echo $result['question'];?>" style="text-decoration:none">
                 <?php echo $result['question'];?>
               </a>
             </h3>
           </div>
           <div class="row px-4 excerpt">
-            <?php echo $result['excerpt'];?>
+          ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
           </div>
           <div class="row px-4 tags">
-          <?php 
-          $query2 = mysqli_query($conn,"SELECT * FROM tags");
-          while($result2 = mysqli_fetch_array($query2)){
-            if($result['id'] == $result2['id'])echo $result2['tag']; }?>
+              #CSS , #HTML
           </div>
           <div class="row total-summary">
               <div class="col-2 ps-5 total-like">
-                <strong><?php echo $result['like'];?></strong>
+                <strong>10</strong>
                 like
               </div>
               <div class="col-10 total-answer">
-                <strong><?php echo $result['answer'];?></strong>
+                <strong>10</strong>
                 answer
               </div>
           </div>
@@ -222,7 +228,7 @@ $limit_start = ($page*$limit_page)-$limit_page;
     <div class="col-12 col-md">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
       <small class="d-block mb-3 text-muted">© 2021</small>
-      <p> Created by <a href="./">QNA Cambodia</a></p>
+      <p> Created by <a href="./">QNA Academy</a></p>
     </div>
     <div class="col-6 col-md">
       <h5>Features</h5>
