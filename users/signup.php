@@ -1,10 +1,3 @@
-<?php
-include('connectdb.php');
-$id = $_GET['id'];
-$query = mysqli_query($conn,"SELECT * FROM data_qna WHERE id= $id");
-$result = mysqli_fetch_array($query);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +7,14 @@ $result = mysqli_fetch_array($query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <title>Question</title>
+    <title>Logn In</title>
   </head>
 <body>
 <!-- Header -->
 <header>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="./">QNA Academy</a>
+    <a class="navbar-brand" href="http://localhost/qna_academy/">QNA Academy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,7 +22,7 @@ $result = mysqli_fetch_array($query);
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item active">
-          <a class="nav-link" aria-current="page" href="./">Home</a>
+          <a class="nav-link" aria-current="page" href="http://localhost/qna_academy/">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Lessons</a>
@@ -57,12 +50,11 @@ $result = mysqli_fetch_array($query);
 
 <!-- Main Body -->
 <div class="container-fluid">
-  <div class="row">
-        <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
+    <div class="row">
+        <div class="col-3 pt-4 -grid gap-2 d-md-flex justify-content-md-end">
           <div id="left-sidebar">
-
             <ul>
-              <li><a class="link-dark" href="./">Home</a></li>
+              <li><a class="link-dark" href="http://localhost/qna_academy/">Home</a></li>
               <li><a class="link-dark" href="#">New Questions</a></li>
               <li><a class="link-dark" href="#">Popular Questions</a></li>
             </ul>
@@ -70,54 +62,34 @@ $result = mysqli_fetch_array($query);
               <button class="btn btn-primary" type="button">Ask a Question</button>
             </div>
             <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn btn-danger btn-sm">Sign In</button>
-              <button type="button" class="btn btn-success btn-sm">Register</button>
+                <a class="link-dark" href="./signin.php">
+                    <button type="button" class="btn btn-success btn-lg">Sign In</button>
+                </a>
+                
             </div>  
           </div>
         </div>
-
-        <div class="col-8 py-3" id="question-summary-1">
-        <div class="question-summary">
-            <div class="row p-1 summary">
-              <h3 class="align-self-start" >
-                  <?php echo $result['question'];?>
-              </h3>
-            </div>
-            <div class="row px-4 excerpt">
-            ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
-            </div>
-            <div class="row px-4 tags">
-                #CSS , #HTML
-            </div>
-            <div class="row total-summary">
-                <div class="col-2 ps-5 total-like">
-                  <strong>10</strong>
-                  like
+        <main class="col-8 pt-4 col-md-5 offset-md-1">
+            <form>
+                <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <label for="inputEmail" class="visually-hidden">Full-name</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Full name" required="" autofocus="">
+                <label for="inputEmail" class="visually-hidden">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <label for="inputPassword" class="visually-hidden">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                <label for="inputPassword" class="visually-hidden">Re-Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Re-Password" required="">
+                <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Follow Us
+                </label>
                 </div>
-                <div class="col-10 total-answer">
-                  <strong>10</strong>
-                  answer
-                </div>
-            </div>
-          </div>
-          <h4 class="mt-4">Your Answer</h4>
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a answer here" id="floatingTextarea2" style="height: 300px"></textarea>
-            <label for="floatingTextarea2">Answer here</label>
-          </div>
-          <div class="col-4 mt-2">
-            <button class="btn btn-danger" type="button">Post Your Answer</button>
-          </div>
-        </div>
-        <div class="col-2 pt-4" id="right-sidebar">
-          <div class="related-tag">
-            <h4 id="h-related-tags">Related Tags</h4>
-            <div class="javascript">Javascript</div>
-            <div class="css">CSS</div>
-            <div class="html">HTML</div>
-          </div>
-        </div>
-  </div>   
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            </form>
+        </main>
+    </div>   
 </div>
  
   

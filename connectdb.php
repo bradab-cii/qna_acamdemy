@@ -2,7 +2,7 @@
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $name_db = "movie";
+    $name_db = "qnaacademy";
 
     $conn = mysqli_connect($host,$user,$pass,$name_db);
     if(!$conn){
