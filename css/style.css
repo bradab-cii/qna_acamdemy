@@ -1,0 +1,57 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+div#question-summary {
+    padding-right: 0px;
+}
+div#excerpt {
+    color: #000;
+    height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Left-sidebar */
+div#left-menu {
+    position: fixed;
+}
+div#left-sidebar ul{
+    list-style-type: none;
+}
+a.link-dark {
+    text-decoration: none;
+}
+
+/* Ask Section */
+div#ask-form, div#note {
+    padding-right: 0;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+    div#left-sidebar {
+        width: 164px;
+    }
+    #right-sidebar {
+        display: none;
+    }
+}
+@media (max-width: 640px){
+    /* Left-sidebar */
+    div#left-menu {
+        position: initial;
+    }
+    div#wrapper {
+        display: inline-block;
+        width: 100%;
+    }
+    div#left-sidebar, div#ask-form {
+        width: 100%;
+    }
+
+    /* Signin-form */
+
+
+}
