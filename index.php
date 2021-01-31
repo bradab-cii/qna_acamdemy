@@ -26,9 +26,10 @@ $limit_start = ($page*$limit_page)-$limit_page;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <!-- Link -->
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    
 </head>
 <body>
 
@@ -70,21 +71,23 @@ $limit_start = ($page*$limit_page)-$limit_page;
 </nav>
 </header>
   
-  <!-- Using PHP Loop --> 
+  <!-- Main Body --> 
 <div class="container-fluid">  
-  <div class="row">
-        <div class="col pt-4 -grid gap-2 d-md-flex justify-content-md-end">
-          <div id="left-sidebar">
+  <div class="row" id="wrapper">
+        <div class="col-2 pt-4 -grid gap-2 d-md-flex justify-content-md-end" id="left-sidebar">
+          <div id="left-menu">
             <ul>
               <li><a class="link-dark" href="./">Home</a></li>
               <li><a class="link-dark" href="#">New Questions</a></li>
               <li><a class="link-dark" href="#">Popular Questions</a></li>
             </ul>
             <div class="-grid gap-2 d-md-flex justify-content-md-end">
-              <button class="btn btn-primary" type="button">Ask a Question</button>
+              <a class="link-dark" href="./question/ask.php">
+                <button class="btn btn-primary" type="button">Ask a Question</button>
+              </a>
             </div>
             <div class="register pt-2 -grid gap-2 d-md-flex justify-content-md-end">
-                <a class="link-dark" href="./users/Signin.php">
+                <a class="link-dark" href="./users/signin.php">
                     <button type="button" class="btn btn-danger btn-sm">Sign In</button>
                 </a>
                 <a class="link-dark" href="./users/signup.php">
@@ -94,20 +97,20 @@ $limit_start = ($page*$limit_page)-$limit_page;
           </div>
         </div>
 
-        <div class="col-8 py-3" id="question-summary-1">
+        <div class="col py-3" id="question-summary">
       <?php 
       $query = mysqli_query($conn,"SELECT * FROM data_qna ORDER BY id DESC LIMIT $limit_start,$limit_page");
       while($result = mysqli_fetch_array($query)){   
       ?>
-        <div class="border border-1 question-summary">
-            <div class="row p-1 summary">
+        <div class="border border-1 question-title">
+            <div class="row summary">
               <h3 class="align-self-start" >
                 <a href="./questions.php?id=<?php echo $result['id']?>&question=<?php echo $result['question'];?>" style="text-decoration:none">
                   <?php echo $result['question'];?>
                 </a>
               </h3>
             </div>
-            <div class="row px-4 excerpt">
+            <div class="row px-4" id="excerpt">
             ដើម្បីទទួលបានភាពជោគជ័យក្នុងពេលសម្ភាសន៍អ្នកគួរត្រៀមចម្លើយនូវសំនួរដែលអាចនឹងសួរក្នុងពេលធ្វើបទសម្ភាសន៍ ។ ប៉ុន្តែសម្រាប់កម្រងសំណួរទាំងអស់ត្រូវតែមានអ្នកសួរសំណួរ - ហើយសម្រាប់អ្នកសួរសំណួរទាំងអស់ត្រូវតែមានសំណួរ! យើងសន្មត់ថាពេលនេះវាជាអ្នក។
             </div>
             <div class="row px-4 tags">
@@ -126,7 +129,7 @@ $limit_start = ($page*$limit_page)-$limit_page;
           </div> 
             <?php } ?>   
         </div>
-        <div class="col pt-4" id="right-sidebar">
+        <div class="col-2 pt-4" id="right-sidebar">
           <div class="related-tag">
             <h4 id="h-related-tags">Related Tags</h4>
             <div class="javascript">Javascript</div>
@@ -165,7 +168,6 @@ $limit_start = ($page*$limit_page)-$limit_page;
     </li>
   <?php } ?>  
   <!------------  ---------------------- -->
-    <!-- Using PHP -->
     <?php 
     //show limit page
     if($page >= 9){//control total page
